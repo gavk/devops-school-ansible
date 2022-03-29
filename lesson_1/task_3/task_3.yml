@@ -1,0 +1,19 @@
+---
+- name: Task 3 playbook
+  hosts: all
+  become: yes
+  tasks:
+  - name: Insert into RUB_CMDLINE_LINUX value 'net.ifnames=0'
+    lineinfile:
+      path: /etc/default/grub
+      regexp: ^GRUB_CMDLINE_LINUX=\"(((?!net\.ifnames=0).)*)\"$
+      line: GRUB_CMDLINE_LINUX="\g<1> net.ifnames=0"
+      backrefs: yes
+
+  - name: Insert into GRUB_CMDLINE_LINUX value 'biosdevname=0'
+    lineinfile:
+      path: /etc/default/grub
+      regexp: ^GRUB_CMDLINE_LINUX=\"(((?!biosdevname=0).)+)\"$
+      line: GRUB_CMDLINE_LINUX="\g<1> biosdevname=0"
+      backrefs: yes
+...

@@ -1,0 +1,25 @@
+---
+- name: Task 2 playbook
+  hosts: all
+  become: yes
+  tasks:
+  - name: Remove httpd
+    yum: name=httpd state=removed
+
+  - name: Delete index.html
+    file:
+      path: /var/www/html/index.html
+      state: absent 
+
+  - name: Install firewalld
+    yum: name=firewalld state=latest
+
+  - name: Start firewalld and start after reboot
+    service: name=firewalld state=started enabled=yes
+
+  - name: Close 80 port for httpd
+    firewalld:
+      service: http
+      zone: public
+      state: disabled
+...

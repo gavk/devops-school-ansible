@@ -1,0 +1,39 @@
+---
+- name: Task 1 playbook
+  hosts: all
+  become: yes
+  tasks:
+  - name: Install httpd
+    yum: name=httpd state=latest
+
+  - name: Start httpd now and start after reboot
+    service: name=httpd state=started enabled=yes
+
+  - name: Check httpd status
+    command: systemctl is-active httpd
+    # If httpd is inactive, then systemctl return non zero exit code  
+    ignore_errors: yes
+    register: result
+
+  - name: Show httpd status
+    debug:
+      msg: "Service 'httpd' is {{ result.stdout }}."
+      
+  - name: Create index.html
+    template:
+      src: index.j2
+      dest: /var/www/html/index.html
+
+  - name: Install firewalld
+    yum: name=firewalld state=latest
+
+  - name: Start firewalld and start after reboot
+    service: name=firewalld state=started enabled=yes
+
+  - name: Open 80 port for httpd
+    firewalld:
+      service: http
+      state: enabled
+      zone: public
+
+...

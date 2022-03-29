@@ -1,0 +1,8 @@
+---
+all:
+  children:
+    nodes:
+      hosts:
+        node1:
+        node2:
+...
