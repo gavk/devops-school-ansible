@@ -1,0 +1,8 @@
+users:
+- login: alice
+  password: "$6$qkuGeoti41HdDDMr$MN4cZ7XevyiJo5GeR6TVS0geu5cYcEMlcY3L.SAcmMl27x5A2Io1wZrPwJoTLgtiRMbCtm5qHktfRc57YkQv6."
+- login: bob
+  password: "$6$Xd/NEfB5Wy7RuwJ0$Xsmykaszs5OBsWDlMq6XdryvM6kibTLUS1bZXOZna15nxTepSGy/g2wfFA01tSlBdFidA/xOBgamZuhEWXLEk/"
+- login: carol
+  password: "$6$GSEPrPa4y3J/ElnY$QoOvCVNN.dKVW3MWZ6EZ08i2e/A8IXiTMFLFJ4ziPRmwexpjOApiwF4.XTMTa.vq5MgxXIjWU0aLZWdmdtk7N."
+
